@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "name": "Fernanders",
+      "id": "2",
+      "email": "fernanders@gmail.com",
+      "gender": "Female"
+    },
+    {
+      "name": "Robert",
+      "id": "3",
+      "email": "robert@gmail.com",
+      "gender": "Female"
+    },
+    {
+      "name": "Nancy",
+      "id": "4",
+      "email": "nancy@gmail.com",
+      "gender": "Female"
+    },
+    {
+      "name": "Sandra",
+      "id": "5",
+      "email": "sandra@gmail.com",
+      "gender": "Female"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
