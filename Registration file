@@ -1,0 +1,323 @@
+  <div class="contain">
+    <main class="my-form">
+        <div class="cotainer">
+            <div class="row justify-content-center ">
+                <div class="col-md-8">
+                        <div class="card naming">
+                            <div class="card-header namin"><div class="nono">Registration Form</div></div>
+                            <div class="card-body">
+                                <form name="my-form" [formGroup]="employeeForm" (ngSubmit)="submit(userName,emailAddress,pass,role)">
+                                    <div class="form-group row">
+                                        <label for="full_name" class="col-md-4 col-form-label text-md-right">User Name</label>
+                                        <div class="col-md-6">
+                                            <input type="text"  class="form-control" formControlName="name" (input)="changeUsername($event)" #userName name="name">
+                                            <div *ngIf="isUsernameEmpty" class="alert-alert-danger" role="alert">
+                                                User name should not be empty
+                                              </div>
+                                        </div>
+                                    </div>
+                                    <!--  -->
+    
+                                    <div class="form-group row">
+                                        <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                        <div class="col-md-6">
+                                            <input type="email" id="email_address" class="form-control" formControlName="email" name="emailAddress" #emailAddress>
+                                            <!-- <div *ngIf = "emailAddress.touched && emailAddress.invalid" class="alert alert-danger" role="alert">
+                                                Email is required
+                                            </div> -->
+                                            <div *ngIf="isEmail" class="alert-alert-danger" role="alert">
+                                                Email should not be empty!
+                                              </div>
+                                            </div>
+                                    </div>
+    
+                                    <div class="form-group row">
+                                        <label for="user_name" class="col-md-4 col-form-label text-md-right">Password</label>
+                                        <div class="col-md-6">
+                                            <input type="password" id="user_name" class="form-control" formControlName="password" #pass name="password">
+                                            <div *ngIf="isPassword" class="alert-alert-danger" role="alert">
+                                                Password Must be atleast 8 characters
+                                              </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group row">
+                                        <label  class="col-md-4 col-form-label text-md-right">Role</label>
+                                        <div class="col-md-8">
+                                              <select name="role" id="role" formControlName="role" #role>
+                                                <option value="admin">Admin</option>
+                                                <option value="employee">Employee</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                        <div class="col-md-6 offset-md-4">
+                                            <button type="submit" class="btn btn-success">
+                                                Submit
+                                            </button>
+                                            <!-- <button type="button" (click)="Adding()" class="btn btn-dark margin-left">
+                                                Add
+                                            </button> -->
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </main>
+<!-- <h2 style="color: white;">{{ getValue.value | json }}</h2>     -->
+</div>
+
+
+
+.contain
+{
+    background: url(../img/done.jpg) no-repeat center fixed;
+    min-width: 100%;
+    min-height: 100%;
+}
+.margin-left
+{
+    margin-left: 10px !important;
+}
+.namin
+{
+    background: rgba(226, 37, 12, 0.4);
+}
+.naming
+{
+    /* background-color: red; */
+    background: rgba(226, 37, 12, 0.3);
+}
+.nono
+{
+    background-color: black;
+    color: white;
+    width: 130px;
+    border-radius: 6px;
+    text-align: center;
+}
+.selector
+{
+    margin-top: 2%;
+}
+
+label
+{
+    color: rgb(46, 20, 214);
+    font-weight: 600;
+}
+body
+{
+    margin: 0;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #212529;
+    text-align: left;
+    background-color: #f5f8fa;
+}
+
+.navbar-laravel
+{
+    box-shadow: 0 2px 4px rgba(0,0,0,.04);
+}
+
+.navbar-brand , .nav-link, .my-form, .login-form
+{
+    font-family: Raleway, sans-serif;
+}
+
+.my-form
+{
+    padding-top: 7rem;
+    padding-bottom: 1.5rem;
+}
+
+.my-form .row
+{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.login-form
+{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.login-form .row
+{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#role
+{
+    margin-top: 2%;
+}
+
+
+
+
+import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import data from '../admin/data.json';
+import {HttpClient} from '@angular/common/http'
+
+
+interface EmployeeList 
+{
+  name : string;
+  id : number;
+  email : string;
+  gender : string;
+}
+
+@Component({
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.css']
+})
+export class RegistrationComponent implements OnInit {
+  isUsernameEmpty = false;
+  isEmail:any;
+  isPassword = false;
+  user : any;
+  email : any;
+  passWord: any;
+  emp:any;
+  employeeForm:any;
+  getData : any;
+  some:any;
+  Employee : EmployeeList[] = data;
+  private url = "http://localhost:3000/posts";
+
+  constructor(private route:Router,private formBuilder: FormBuilder, private http: HttpClient) {
+
+  }
+  ngOnInit(): void {
+    this.AddEmployee();
+    // this.AddEmployee1();
+  }
+
+  
+  AddEmployee(){
+    this.employeeForm = new FormGroup({
+      name:new FormControl("",Validators.required),
+      email:new FormControl("",Validators.required),
+      password:new FormControl("",Validators.required),
+      role:new FormControl("",Validators.required),
+      // this.formBuilder.group
+      // name:['',Validators.required],
+      // email:['', Validators.required],
+      // password:['', Validators.required],
+      // role:['', Validators.required],
+      // registerForm : new FormGroup({
+      //   name:new FormControl("Rajesh"),
+      //   email:new FormControl(""),
+      //   password:new FormControl(""),
+      //   role:new FormControl(""),
+      // })
+    });
+  }
+
+  Adding() {
+    this.http.post(this.url, this.employeeForm.value).subscribe(
+      data => 
+      {
+        console.log('POST Request is successful ', data);
+      },
+    );
+  }
+  // Adding(){
+    
+  //   this.some = this.Employee.push(this.employeeForm.value);
+  //   console.log(JSON.stringify(this.some));
+    
+  // }
+
+  submit(userName: any, emailAddress: any, pass:any,role:any){
+  //  console.log(userName.value);
+  console.log(this.employeeForm.value);
+  
+  this.passWord = pass.value;
+  if(this.employeeForm.valid && this.passWord.length >= 8)
+    {
+      alert('The form is valid!!')
+      this.emp=role.value;
+      this.isUsernameEmpty = false;
+      this.isPassword = false;
+      this.isEmail = false;
+      if(this.emp === 'admin')
+        {
+          alert("Admin Page is Loading");
+          this.route.navigate(['/admin']);
+        }
+        else
+        {
+          alert("Employee Page is Loading");
+          this.route.navigate(['/employee']);
+        }
+    }
+    else 
+    {
+      alert('The form is not valid!!')
+      this.isUsernameEmpty = true;
+      this.isPassword = true;
+      this.isEmail = true;
+    }
+    localStorage.setItem('key',JSON.stringify(this.employeeForm.value))
+  //   sessionStorage.setItem('key',JSON.parse(this.employeeForm.value))
+  // this.getData = Object.assign(this.getData, this.employeeForm.value);
+  // this.addUser(this.getData);
+  
+  } 
+  // addUser(user:any){
+  //   let users;
+  //   if(localStorage.getItem('Users'))
+  //   {
+  //     users = JSON.parse(localStorage.getItem('Users')|| '{}');
+  //     users = [user, ...users];
+  //   }
+  //   else
+  //   {
+  //     users = [user];
+  //   }
+  //   localStorage.setItem('Users', JSON.stringify(this.getData));
+  // } 
+  changeUsername(e: any) {
+    // console.log(e.target.value);
+    if (e.target.value !== '') {
+      this.isUsernameEmpty = false;
+      this.isPassword = false;
+      this.isEmail = false;
+    }
+  }
+  //  this.user = userName.value;
+  //   if (this.user === '') {
+  //     this.isUsernameEmpty = true;
+  //   } else {
+  //     this.isUsernameEmpty = false;
+  //   }
+
+  //   this.passWord = pass.value;
+  //   if (this.passWord.length < 8) {
+  //     this.isPassword = true;
+  //   } else {
+  //     this.isPassword = false;
+  //   }
+  
+  // console.log(emailAddress.value);
+  //   this.email = emailAddress.value;
+  //   var regex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
+  //   if (regex.test(this.email)) {
+  //       return this.isEmail = 1;
+  //   } else if (regex.test(this.email) == null) {
+  //       return this.isEmail = 0;
+  //   } else {
+  //       return this.isEmail = -1;
+  //   }
+  // }  
+}
