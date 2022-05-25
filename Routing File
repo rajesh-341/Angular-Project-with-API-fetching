@@ -1,0 +1,56 @@
+import { Component, NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from '../app.component';
+import {LoginPageComponent} from '../login-page/login-page.component';
+import {RegistrationComponent} from '../registration/registration.component';
+import {AdminComponent} from '../admin/admin.component';
+import {EmployeeComponent} from '../employee/employee.component'
+import {UpdateFormComponent} from '../update-form/update-form.component'
+
+
+const routes: Routes = [
+  {
+    path:'',
+    component: RegistrationComponent,
+  },
+  {
+    path:'login',
+    component: LoginPageComponent,
+  },
+  {
+    path:'admin',
+    component: AdminComponent,
+  },
+  {
+    path:'employee',
+    component: EmployeeComponent,
+  },
+  {
+    path:'update',
+    component: UpdateFormComponent,
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+
+
+
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { AppRoutingModule } from './app-routing.module';
+
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    AppRoutingModule
+  ]
+})
+export class AppModule { }
