@@ -1,0 +1,47 @@
+import { TestBed } from '@angular/core/testing';
+
+import { EmployeeApiService } from './employee-api.service';
+
+describe('EmployeeApiService', () => {
+  let service: EmployeeApiService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(EmployeeApiService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
+
+
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators'
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EmployeeApiService {
+  private url = "http://localhost:3000/posts/";
+  constructor(private http:HttpClient) { }
+
+  // deleteEmployee(id:any):Observable<unknown>{
+  //   return this.http.delete<unknown>('${this.url}/${id}');
+  // }
+
+  delete(id:number){
+    return this.http.delete<any>(this.url+id)
+    .pipe(map((res)=>{
+      return res;
+    }))
+  }
+
+  // getAllData(id:number){
+  //   return this.http.delete<any>(this.url+id)
+  //   .pipe(map((res)=>{
+  //     return res;
+  //   }))
+  // }
+}
