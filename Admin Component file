@@ -1,1 +1,253 @@
+<div class="wrapper">
+    <img class="search-icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU2Ljk2NiA1Ni45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU2Ljk2NiA1Ni45NjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPHBhdGggZD0iTTU1LjE0Niw1MS44ODdMNDEuNTg4LDM3Ljc4NmMzLjQ4Ni00LjE0NCw1LjM5Ni05LjM1OCw1LjM5Ni0xNC43ODZjMC0xMi42ODItMTAuMzE4LTIzLTIzLTIzcy0yMywxMC4zMTgtMjMsMjMgIHMxMC4zMTgsMjMsMjMsMjNjNC43NjEsMCw5LjI5OC0xLjQzNiwxMy4xNzctNC4xNjJsMTMuNjYxLDE0LjIwOGMwLjU3MSwwLjU5MywxLjMzOSwwLjkyLDIuMTYyLDAuOTIgIGMwLjc3OSwwLDEuNTE4LTAuMjk3LDIuMDc5LTAuODM3QzU2LjI1NSw1NC45ODIsNTYuMjkzLDUzLjA4LDU1LjE0Niw1MS44ODd6IE0yMy45ODQsNmM5LjM3NCwwLDE3LDcuNjI2LDE3LDE3cy03LjYyNiwxNy0xNywxNyAgcy0xNy03LjYyNi0xNy0xN1MxNC42MSw2LDIzLjk4NCw2eiIgZmlsbD0iIzAwMDAwMCIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+    <input placeholder="Search" type="text" class="search" [(ngModel)]="searchFilter">
+    <img class="clear-icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxLjk3NiA1MS45NzYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxLjk3NiA1MS45NzY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8cGF0aCBkPSJNNDQuMzczLDcuNjAzYy0xMC4xMzctMTAuMTM3LTI2LjYzMi0xMC4xMzgtMzYuNzcsMGMtMTAuMTM4LDEwLjEzOC0xMC4xMzcsMjYuNjMyLDAsMzYuNzdzMjYuNjMyLDEwLjEzOCwzNi43NywwICAgQzU0LjUxLDM0LjIzNSw1NC41MSwxNy43NCw0NC4zNzMsNy42MDN6IE0zNi4yNDEsMzYuMjQxYy0wLjc4MSwwLjc4MS0yLjA0NywwLjc4MS0yLjgyOCwwbC03LjQyNS03LjQyNWwtNy43NzgsNy43NzggICBjLTAuNzgxLDAuNzgxLTIuMDQ3LDAuNzgxLTIuODI4LDBjLTAuNzgxLTAuNzgxLTAuNzgxLTIuMDQ3LDAtMi44MjhsNy43NzgtNy43NzhsLTcuNDI1LTcuNDI1Yy0wLjc4MS0wLjc4MS0wLjc4MS0yLjA0OCwwLTIuODI4ICAgYzAuNzgxLTAuNzgxLDIuMDQ3LTAuNzgxLDIuODI4LDBsNy40MjUsNy40MjVsNy4wNzEtNy4wNzFjMC43ODEtMC43ODEsMi4wNDctMC43ODEsMi44MjgsMGMwLjc4MSwwLjc4MSwwLjc4MSwyLjA0NywwLDIuODI4ICAgbC03LjA3MSw3LjA3MWw3LjQyNSw3LjQyNUMzNy4wMjIsMzQuMTk0LDM3LjAyMiwzNS40NiwzNi4yNDEsMzYuMjQxeiIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />
+  </div>
+  <!-- <div class="input-group rounded">
+    <input type="search" class="form-control rounded" [(ngModel)]="searchFilter" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+    <span class="input-group-text border-0" id="search-addon">
+      <i class="fas fa-search"></i>
+    </span>
+  </div> -->
+    <table class="table bg-secondary">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="some" *ngFor="let emp of Employees | filter:searchFilter">
+          <th>{{emp.id}}</th>
+          <td>{{emp.name}}</td>
+          <td>{{emp.email}}</td>
+          <td>{{emp.gender}}</td>
+          <td>
+            <!-- <button class="btn btn-secondary" ></button>  -->
+            <button type="button" class="btn btn-info" (click)="deleteIt(emp)" style="border-radius:20px"><i class="bi bi-trash3"></i></button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"  style="border-radius:20px"><i class="bi bi-arrow-repeat"></i></button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- (click)="updateIt(emp)" -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Launch demo modal
+      </button> -->
 
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- <i class="fa fa-trash" aria-hidden="true"></i> -->
+
+
+
+@import"~bootstrap-icons/font/bootstrap-icons.css";
+/* @import"~bootstrap/dist/css/bootstrap.min.css"; */
+/* table
+{
+    background-color: grey;
+    width: 100%;
+} */
+.some
+{
+  color: #4d2222;
+  font-weight: 550;
+  /* font-size: 25px; */
+}
+  .wrapper {
+    position: relative;
+    display: flex;
+    min-width: 100px;
+  }
+  
+  .search {
+    border: 1px solid rgb(12, 48, 19);
+    border-radius: 5px;
+    height: 25px;
+    width: 100%;
+    padding: 2px 23px 2px 30px;
+    outline: 0;
+    background-color: #582f2c;
+  }
+  
+  .search-icon {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 14px;
+  }
+  
+  .clear-icon {
+    position: absolute;
+    top: 9px;
+    right: 8px;
+    width: 12px;
+    cursor: pointer;
+    visibility: hidden;
+  }
+  
+  .search:hover, .search:focus {
+    border: 2px solid #309726;
+    background-color: white;
+  }
+  
+  
+  
+  import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import {Router} from '@angular/router';
+import { HttpClient} from  '@angular/common/http';
+import {EmployeeApiService} from '../employee-api.service';
+import {ActivatedRoute} from '@angular/router'
+
+// interface EmployeeList 
+// {
+//   name : string;
+//   id : number;
+//   email : string;
+//   gender : string;
+// }
+
+@Component({
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
+})
+export class AdminComponent implements OnInit {
+  searchFilter:any;
+  employee:any;
+  some:any;
+  Employees : any;
+  emp: any;
+  
+  private url = "http://localhost:3000/posts";
+  constructor(private http: HttpClient , private service: EmployeeApiService,private route : Router, private Aroute:ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.getEmployee(); 
+  }
+  
+  
+  deleteIt(id:any)
+  {  
+    this.service.delete(id.id).subscribe(res=>
+    {
+      this.getEmployee();
+    })
+  }
+    // console.log(this.Employees.id);
+    // this.Employees.forEach((element: any, index: any) => {
+    //   if (element.id === id) {
+    //     this.Employees.splice(index, 1);
+    //   }
+    // });
+  
+  getEmployee() 
+  {
+    this.http.get(this.url).subscribe((res: any)=>
+    {
+      return this.Employees = res;
+    })
+  }
+
+  updateIt(id:any){
+    console.log("Update is also Working");
+    // this.service.setter(id);
+    this.route.navigate(['/update']);
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+[
+    {
+        "name": "Michael",
+        "id": "1",
+        "email": "micheal@gmail.com",
+        "gender": "Male",
+        "action": ""
+    },
+    {
+        "name": "Charles",
+        "id": "2",
+        "email": "charles@gmail.com",
+        "gender": "Male",
+        "action": ""
+    },
+    {
+        "name": "Christopher",
+        "id": "3",
+        "email": "christopher@gmail.com",
+        "gender": "Male",
+        "action": ""
+    },
+    {
+        "name": "Anthony",
+        "id": "4",
+        "email": "anthony@gmail.com",
+        "gender": "Male",
+        "action": ""
+    },
+    {
+        "name": "Nancy",
+        "id": "5",
+        "email": "nancy@gmail.com",
+        "gender": "Female",
+        "action": ""
+    },
+    {
+        "name": "Sandra",
+        "id": "6",
+        "email": "sandra@gmail.com",
+        "gender": "Female",
+        "action": ""
+    }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+declare module "*.json"{
+    const value : any;
+    export default value;
+}
